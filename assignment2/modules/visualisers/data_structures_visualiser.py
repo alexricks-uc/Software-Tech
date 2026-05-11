@@ -5,7 +5,7 @@ from assignment2.part1 import task_1_3
 from assignment2.part2 import task_2_1
 from assignment2.part2 import task_2_2
 
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 800, 700
 clock = pygame.time.Clock()
 
 BLOCK_WIDTH, BLOCK_HEIGHT = 200, 40

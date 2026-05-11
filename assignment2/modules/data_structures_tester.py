@@ -105,4 +105,5 @@ if __name__ == "__main__":
 
 # questions: how much commenting is required?
 # is my implementation of the heap visualiser legitimate?
-# do i need to implement testing of tasks without classes (eg. sorting)
+# do i need to implement testing of tasks without classes (eg. sorting, pathfinding)
+# is this dijkstra/a*/shortest path thing still part of the assignment?

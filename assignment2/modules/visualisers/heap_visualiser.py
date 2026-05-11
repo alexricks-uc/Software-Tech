@@ -2,7 +2,7 @@ import pygame
 import sys
 from assignment2.part3 import task_3_2
 
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 800, 700
 clock = pygame.time.Clock()
 
 BLOCK_WIDTH, BLOCK_HEIGHT = 200, 40

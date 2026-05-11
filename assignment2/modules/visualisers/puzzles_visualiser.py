@@ -1,8 +1,9 @@
 import pygame
 import sys
-from assignment2.part3 import task_3_1
+from assignment2.part3 import task_3_3_1
+from assignment2.part3 import task_3_3_2
 
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 800, 700
 clock = pygame.time.Clock()
 
 BLOCK_WIDTH, BLOCK_HEIGHT = 200, 40
@@ -10,15 +11,20 @@ START_X = (WIDTH - BLOCK_WIDTH) // 2
 BASE_Y = HEIGHT - BLOCK_HEIGHT - 20
 
 
-def graph_visualization():
-    task_3_1.main()
+def path_visualization():
+    task_3_3_1.main()
+
+
+def change_visualization():
+    task_3_3_2.main()
 
 
 def run(screen):
     font = pygame.font.SysFont(None, 28)
 
     menu_items = [
-        "Graph Visualization (press enter)",
+        "Path Visualization (press enter)",
+        "Money Combinations Visualization (press enter)",
         "Back"
     ]
 
@@ -50,9 +56,14 @@ def run(screen):
                 elif event.key == pygame.K_RETURN:
                     choice = menu_items[selected]
 
-                    if choice == "Graph Visualization (press enter)":
-                        pygame.display.set_mode((600, 550))
-                        graph_visualization()
+                    if choice == "Path Visualization (press enter)":
+                        pygame.display.set_mode((600, 700))
+                        path_visualization()
+                        pygame.display.set_mode((WIDTH, HEIGHT))
+
+                    elif choice == "Money Combinations Visualization (press enter)":
+                        pygame.display.set_mode((600, 750))
+                        change_visualization()
                         pygame.display.set_mode((WIDTH, HEIGHT))
 
                     elif choice == "Back":
