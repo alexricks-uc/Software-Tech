@@ -1,7 +1,9 @@
 import pygame
 import sys
-from assignment2.part1.modules.stack import Stack
+from assignment2.modules.classes.stack import Stack
 from assignment2.part1 import task_1_3
+from assignment2.part2 import task_2_1
+from assignment2.part2 import task_2_2
 
 WIDTH, HEIGHT = 800, 600
 clock = pygame.time.Clock()
@@ -63,14 +65,22 @@ def queue_visualization(font):
     task_1_3.main(font)
 
 
+def linked_list_visualisation():
+    task_2_1.main()
+
+
+def bst_visualisation():
+    task_2_2.main()
+
+
 def run(screen):
     font = pygame.font.SysFont(None, 28)
 
     menu_items = [
         "Stack Visualization (press enter)",
         "Queue Visualization (press enter)",
-        "Linked List Visualization (not implemented)",
-        "BST Visualization (not implemented)",
+        "Linked List Visualization (press enter)",
+        "BST Visualization (press enter)",
         "Back"
     ]
 
@@ -103,10 +113,24 @@ def run(screen):
                     choice = menu_items[selected]
 
                     if choice == "Stack Visualization (press enter)":
+                        pygame.display.set_mode((600, 500))
                         stack_visualization(screen, font)
+                        pygame.display.set_mode((WIDTH, HEIGHT))
 
                     if choice == "Queue Visualization (press enter)":
+                        pygame.display.set_mode((800, 600))
                         queue_visualization(font)
+                        pygame.display.set_mode((WIDTH, HEIGHT))
+
+                    if choice == "Linked List Visualization (press enter)":
+                        pygame.display.set_mode((1000, 300))
+                        linked_list_visualisation()
+                        pygame.display.set_mode((WIDTH, HEIGHT))
+
+                    if choice == "BST Visualization (press enter)":
+                        pygame.display.set_mode((1050, 750))
+                        bst_visualisation()
+                        pygame.display.set_mode((WIDTH, HEIGHT))
 
                     elif choice == "Back":
                         running = False

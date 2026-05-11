@@ -1,6 +1,6 @@
 import unittest
 import time
-from assignment2.part1.modules.stack import Stack
+from assignment2.modules.classes.stack import Stack
 
 
 class TestStack(unittest.TestCase):

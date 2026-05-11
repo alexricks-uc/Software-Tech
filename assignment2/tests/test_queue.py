@@ -1,7 +1,7 @@
 import unittest
 import time
 
-from assignment2.part1.modules.my_queue import Queue
+from assignment2.modules.classes.my_queue import Queue
 
 
 class TestStack(unittest.TestCase):

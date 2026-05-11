@@ -1,10 +1,12 @@
 import pygame
 import sys
-import data_structures_visualiser
+from assignment2.modules.visualisers import puzzles_visualiser, \
+    data_structures_visualiser, heap_visualiser, graph_visualiser, \
+    sorting_visualiser
 
 pygame.init()
 
-WIDTH, HEIGHT = 800, 600
+WIDTH, HEIGHT = 800, 700
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Algorithm Explorer")
 
@@ -25,7 +27,9 @@ def main_menu():
         'Data Structures': pygame.Rect(300, 150, 200, 50),
         'Sorting': pygame.Rect(300, 230, 200, 50),
         'Graphs': pygame.Rect(300, 310, 200, 50),
-        'Exit': pygame.Rect(300, 390, 200, 50),
+        'Heap': pygame.Rect(300, 390, 200, 50),
+        'Puzzles': pygame.Rect(300, 470, 200, 50),
+        'Exit': pygame.Rect(300, 550, 200, 50),
     }
 
     for text, rect in buttons.items():
@@ -56,16 +60,32 @@ def main():
                             if name == "Exit":
                                 running = False
 
-                            elif name == "Data Structures":
+                            if name == "Data Structures":
                                 current_module = name
 
-                            else:
-                                # Future modules here
-                                pass
+                            if name == "Sorting":
+                                current_module = name
+
+                            if name == "Graphs":
+                                current_module = name
+
+                            if name == "Heap":
+                                current_module = name
+
+                            if name == "Puzzles":
+                                current_module = name
         else:
             try:
                 if current_module == "Data Structures":
                     data_structures_visualiser.run(screen)
+                elif current_module == "Sorting":
+                    sorting_visualiser.run(screen)
+                elif current_module == "Graphs":
+                    graph_visualiser.run(screen)
+                elif current_module == "Heap":
+                    heap_visualiser.run(screen)
+                elif current_module == "Puzzles":
+                    puzzles_visualiser.run(screen)
 
             except SystemExit:
                 running = False
@@ -82,3 +102,7 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# questions: how much commenting is required?
+# is my implementation of the heap visualiser legitimate?
+# do i need to implement testing of tasks without classes (eg. sorting)
