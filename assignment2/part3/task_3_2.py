@@ -2,6 +2,10 @@ import math
 import random
 import pygame
 
+"""
+Visualises building and removing from heap
+"""
+
 pygame.init()
 WIDTH, HEIGHT = 600, 450
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -11,6 +15,13 @@ heap = []  # min-heap implemented as list
 
 
 def draw_heap(heap, highlight_indices=[], event="", next=""):
+    """
+    Draws the heap as well as event descriptions
+    :param heap: list used as heap
+    :param highlight_indices: nodes to be highlighted
+    :param event: text for event being displayed
+    :param next: text for next event to be displayed
+    """
     screen.fill((255, 255, 255))
     if event != "":
         event_rect = pygame.Rect(0, HEIGHT - 100, WIDTH, 45)
@@ -62,6 +73,13 @@ def draw_heap(heap, highlight_indices=[], event="", next=""):
 
 
 def get_next_adding_event(heap, index, next_val):
+    """
+    Gets next event while adding to the heap
+    :param heap: list representing heap
+    :param index: index of value being swapped up in heap
+    :param next_val: if next event is inserting, the value to be inserted
+    :return: text explaining next event
+    """
     parent = (index - 1) // 2
     has_parent = True
     if index == 0:
@@ -76,6 +94,12 @@ def get_next_adding_event(heap, index, next_val):
 
 
 def get_next_removing_event(heap, index):
+    """
+    Gets next event while removing from the heap
+    :param heap: list representing heap
+    :param index: index of value at top of heap
+    :return: text explaining next event
+    """
     n = len(heap)
     left = 2 * index + 1
     right = 2 * index + 2
@@ -94,6 +118,15 @@ def get_next_removing_event(heap, index):
 
 
 def heapify_up(heap, index, next_val, text, next):
+    """
+    Build heap up and visualise
+    :param heap: list representing heap
+    :param index: index of current value being added
+    :param next_val: value of next item being inserted
+    :param text: text describing current event
+    :param next: text describing next event
+    :return: text describing current and next events
+    """
     while index > 0:
         parent = (index - 1) // 2
         if heap[parent] > heap[index]:
@@ -109,6 +142,11 @@ def heapify_up(heap, index, next_val, text, next):
 
 
 def heapify_down(heap, index):
+    """
+    Disassemble the heap and visualise
+    :param heap: list representing heap
+    :param index: value of root item
+    """
     n = len(heap)
     while True:
         left = 2 * index + 1
@@ -130,6 +168,13 @@ def heapify_down(heap, index):
 
 
 def insert(heap, idx, insertions):
+    """
+    Add new item to visualisation of heap
+    :param heap: list representing heap
+    :param idx: index of inserted value in heap
+    :param insertions: values to be inserted
+    :return: text describing current and next event
+    """
     val = insertions[idx]
     text = f'Inserted {val} to the heap'
     heap.append(val)
@@ -145,6 +190,11 @@ def insert(heap, idx, insertions):
 
 
 def extract_min(heap):
+    """
+    Remove the smallest item from the visualisation of the heap
+    :param heap: list representing heap
+    :return: root of heap, or none if the heap is empty
+    """
     if len(heap) == 0:
         return None
     root = heap[0]
@@ -162,6 +212,9 @@ def extract_min(heap):
 
 
 def main():
+    """
+    Runs visualiser until user quits
+    """
     running = True
     insertions = [random.randint(1, 100) for _ in range(10)]
     idx = 0

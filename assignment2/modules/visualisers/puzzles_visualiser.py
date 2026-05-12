@@ -3,6 +3,10 @@ import pygame
 from assignment2.part3 import task_3_3_1
 from assignment2.part3 import task_3_3_2
 
+"""
+Menu screen for puzzle visualisers
+"""
+
 WIDTH, HEIGHT = 800, 700
 clock = pygame.time.Clock()
 
@@ -12,14 +16,24 @@ BASE_Y = HEIGHT - BLOCK_HEIGHT - 20
 
 
 def path_visualization():
+    """
+    Calls main of task_3_3_1
+    """
     task_3_3_1.main()
 
 
 def change_visualization():
+    """
+    Calls main of task 3_3_2
+    """
     task_3_3_2.main()
 
 
 def run(screen):
+    """
+    Runs puzzles menu
+    :param screen: pygame window
+    """
     font = pygame.font.SysFont(None, 28)
 
     menu_items = [

@@ -3,6 +3,11 @@ import time
 
 from assignment2.modules.classes.my_queue import Queue
 
+"""
+Please note that testing and benchmarking of any non-class-based programs was 
+neglected, as discussed with tutor
+"""
+
 
 class TestStack(unittest.TestCase):
 

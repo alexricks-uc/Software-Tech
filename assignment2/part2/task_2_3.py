@@ -2,6 +2,10 @@ import pygame
 import random
 import sys
 
+"""
+Visualises 3 different sorting algorithms
+"""
+
 pygame.init()
 WIDTH, HEIGHT = 600, 500
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -16,6 +20,16 @@ bar_width = WIDTH // ARRAY_SIZE
 
 def draw_array(array, color_positions=None, highlight_range=None,
                merge_range=None):
+    """
+    Draws the array being sorted
+    :param array: list being sorted
+    :param color_positions: dictionary with rectangles to be highlighted
+    :param highlight_range: when merge sorting, the range of rectangles to
+    be highlighted
+    :param merge_range: when merge sorting, the rectangles in the area
+    being merged
+    :return: 3 buttons
+    """
     screen.fill((30, 30, 30))
     bubble, selection, merge = draw_buttons()
     for i, val in enumerate(array):
@@ -35,6 +49,10 @@ def draw_array(array, color_positions=None, highlight_range=None,
 
 
 def draw_buttons():
+    """
+    Draws the buttons for selecting each algorithm
+    :return: 3 buttons
+    """
     bubble = pygame.Rect(0, 0, WIDTH // 3 - 10, 100)
     pygame.draw.rect(screen, (200, 200, 200), bubble)
     bubble_text = FONT.render("Bubble", True, (0, 0, 0))
@@ -57,6 +75,10 @@ def draw_buttons():
 
 
 def bubble_sort_visualize(array):
+    """
+    Visualises the bubble sort algorithm
+    :param array: list of values
+    """
     n = len(array)
     for i in range(n):
         for j in range(0, n - i - 1):
@@ -74,6 +96,10 @@ def bubble_sort_visualize(array):
 
 
 def selection_sort_visualize(array):
+    """
+    Visualises the selection sort algorithm
+    :param array: list of values
+    """
     n = len(array)
     for i in range(n - 1):
         k = i
@@ -96,6 +122,12 @@ def selection_sort_visualize(array):
 
 
 def merge_sort(array, left=None, right=None):
+    """
+    Performs a merge sort of the list
+    :param array: list of values
+    :param left: value at left end of merge area
+    :param right: value at right end of merge area
+    """
     if left is None:
         left = 0
     if right is None:
@@ -113,6 +145,13 @@ def merge_sort(array, left=None, right=None):
 
 
 def merge_sort_visualize(array, left, mid, right):
+    """
+    Visualises the merge sort algorithm
+    :param array: list of values
+    :param left: left end of merge range
+    :param mid: middle of range
+    :param right: right end of merge range
+    """
     left_array = array[left:mid + 1]
     right_array = array[mid + 1:right + 1]
     i = j = 0
@@ -152,6 +191,9 @@ def merge_sort_visualize(array, left, mid, right):
 
 
 def handle_events():
+    """
+    Handles program events
+    """
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -160,6 +202,9 @@ def handle_events():
 
 
 def main():
+    """
+    Runs visualiser until the user quits
+    """
     running = True
     bubble, selection, merge = draw_array(array)
     pygame.time.wait(1000)

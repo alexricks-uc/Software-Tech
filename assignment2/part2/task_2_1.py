@@ -3,6 +3,10 @@ from copy import deepcopy
 import pygame
 import sys
 
+"""
+Visualises linked list operations
+"""
+
 pygame.init()
 WIDTH, HEIGHT = 1000, 300
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -13,16 +17,36 @@ NODE_RADIUS = 25
 
 
 class Node:
+    """
+    Defines a node in a linked list
+    """
+
     def __init__(self, value):
+        """
+        Initialises a node with value and next node
+        :param value:
+        """
         self.value = value
         self.next = None
 
 
 class LinkedList:
+    """
+    Defines a linked list with insert, delete, reverse and list conversion methods
+    """
+
     def __init__(self):
+        """
+        Initialises linked list with a head node
+        """
         self.head = None
 
     def insert(self, value, pos):
+        """
+        Traverses to a given position and inserts node of given value there
+        :param value: value of node
+        :param pos: position to be inserted
+        """
         if not self.head:
             self.head = Node(value)
             return
@@ -36,6 +60,10 @@ class LinkedList:
         current.next.next = temp
 
     def delete(self, pos):
+        """
+        Deletes the node at given position by linking predecessor to successor
+        :param pos: position of deleted node
+        """
         if not self.head:
             return
         current = self.head
@@ -49,6 +77,11 @@ class LinkedList:
             self.head = current.next
 
     def reverse(self):
+        """
+        Reverses the linked list by adding nodes to a list, popping the end of
+        the list, setting it to be the head and then repeatedly popping until
+        list is empty and linked list is reversed
+        """
         current = self.head
         unconnected = []
         while current:
@@ -67,6 +100,10 @@ class LinkedList:
                 current = current.next
 
     def to_list(self):
+        """
+        Creates a list of all values in the linked list
+        :return: the list of linked list values
+        """
         elems = []
         current = self.head
 
@@ -78,6 +115,14 @@ class LinkedList:
 
 
 def draw_node(x, y, value, highlight=False):
+    """
+    Draws a node
+    :param x: x position
+    :param y: y position
+    :param value: value of node being drawn
+    :param highlight: different colour based on whether the node is
+    currently selected
+    """
     color = (255, 100, 100) if highlight else (100, 200, 250)
     pygame.draw.circle(screen, color, (x, y), NODE_RADIUS)
 
@@ -87,6 +132,11 @@ def draw_node(x, y, value, highlight=False):
 
 
 def draw_arrow(start_pos, end_pos):
+    """
+    Draws an arrow between nodes
+    :param start_pos: start coordinates
+    :param end_pos: end coordinates
+    """
     pygame.draw.line(screen, (0, 0, 0), start_pos, end_pos, 3)
 
     # Draw a simple arrow head
@@ -104,6 +154,14 @@ def draw_arrow(start_pos, end_pos):
 
 def draw_linked_list(linked_list, y_offset=0,
                      highlight_index=None, entered=''):
+    """
+    Draws the linked list with entry box and instruction text
+    :param linked_list: the linked list object
+    :param y_offset: value for offset position of list when animating
+    :param highlight_index: index of selected node which will be highlighted
+    :param entered: textbox entry
+    :return: textbox rect
+    """
     screen.fill((240, 240, 240))
 
     nodes = []
@@ -143,6 +201,9 @@ def draw_linked_list(linked_list, y_offset=0,
 
 
 def handle_events():
+    """
+    Handles program events
+    """
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -151,6 +212,9 @@ def handle_events():
 
 
 def main():
+    """
+    Runs visualiser until user quits
+    """
     ll = LinkedList()
     running = True
     textbox = False

@@ -2,6 +2,11 @@ import unittest
 import time
 from assignment2.modules.classes.stack import Stack
 
+"""
+Please note that testing and benchmarking of any non-class-based programs was 
+neglected, as discussed with tutor
+"""
+
 
 class TestStack(unittest.TestCase):
 

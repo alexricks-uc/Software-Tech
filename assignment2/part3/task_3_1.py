@@ -1,6 +1,10 @@
 import collections
 import pygame
 
+"""
+Visualises graph traversals
+"""
+
 pygame.init()
 WIDTH, HEIGHT = 600, 550
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -26,6 +30,13 @@ graph = {
 
 
 def draw_graph(visited=[], frontier=set(), current=None):
+    """
+    Draws the graph
+    :param visited: list of nodes already traversed
+    :param frontier: next nodes to be traversed
+    :param current: current node being traversed
+    :return: list of nodes, 2 buttons
+    """
     screen.fill((240, 240, 240))
     nodes = []
     bfs_rect, dfs_rect = draw_rest(visited)
@@ -54,6 +65,11 @@ def draw_graph(visited=[], frontier=set(), current=None):
 
 
 def draw_rest(visited):
+    """
+    Draws the buttons and the text representation of the traversal
+    :param visited: nodes already visited in traversal
+    :return: 2 buttons
+    """
     bfs_rect = pygame.Rect(0, HEIGHT - 100, WIDTH // 2 - 5, 100)
     pygame.draw.rect(screen, (200, 200, 200), bfs_rect)
     bfs_text = FONT.render("BFS", True, (0, 0, 0))
@@ -81,6 +97,10 @@ def draw_rest(visited):
 
 
 def bfs(start):
+    """
+    Performs a breadth first search on the graph
+    :param start: starting node
+    """
     visited = []
     queue = collections.deque([start])
     while queue:
@@ -94,6 +114,10 @@ def bfs(start):
 
 
 def dfs(start):
+    """
+    Performs a depth first search on the graph
+    :param start: starting node
+    """
     visited = []
     stack = [start]
     while stack:
@@ -108,6 +132,10 @@ def dfs(start):
 
 
 def main():
+    """
+    Runs visualiser until user quits
+    :return:
+    """
     nodes, bfs_rect, dfs_rect = draw_graph()
     pygame.time.wait(1000)
     running = True

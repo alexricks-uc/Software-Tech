@@ -1,6 +1,10 @@
 import pygame
 import sys
 
+"""
+Visualises a pathfinding algorithm in a grid
+"""
+
 pygame.init()
 WIDTH, HEIGHT = 600, 700
 ROWS, COLS = 6, 6
@@ -14,6 +18,12 @@ desc = "esc: quit, return: show path. Click to add/remove obstacles"
 
 
 def draw_grid(dp, obstacles=[], path=None):
+    """
+    Visualises the grid
+    :param dp: values of the grid
+    :param obstacles: obstacles in the grid
+    :param path: path used to find bottom right corner of the grid
+    """
     screen.fill((255, 255, 255))
     path_rect = pygame.Rect(0, 0, WIDTH, 50)
     pygame.draw.rect(screen, (200, 200, 200), path_rect)
@@ -52,6 +62,11 @@ def draw_grid(dp, obstacles=[], path=None):
 
 
 def count_paths(obstacles=[]):
+    """
+    Calculates the number of paths that can be taken to reach each cell in the grid
+    :param obstacles: obstacles in the grid
+    :return: values of the grid
+    """
     dp = [[None] * COLS for _ in range(ROWS)]
     for r in range(ROWS):
         for c in range(COLS):
@@ -71,7 +86,12 @@ def count_paths(obstacles=[]):
     return dp
 
 
-def find_path(dp, obstacles):
+def find_path(dp):
+    """
+    Finds a path from top left to bottom right of the grid
+    :param dp: values of the grid
+    :return: the path taken, if one is possible
+    """
     if dp[ROWS - 1][COLS - 1] == 0:
         return []
     r = ROWS - 1
@@ -89,6 +109,9 @@ def find_path(dp, obstacles):
 
 
 def main():
+    """
+    Runs visualiser until user quits
+    """
     dp = count_paths()
     pygame.time.wait(1000)
     running = True
@@ -100,7 +123,7 @@ def main():
                 if event.key == pygame.K_ESCAPE:
                     running = False
                 if event.key == pygame.K_RETURN:
-                    path = find_path(dp, obstacles)
+                    path = find_path(dp)
                     draw_grid(dp, obstacles, path)
             if event.type == pygame.MOUSEBUTTONDOWN:
                 for coord, rect in cells.items():

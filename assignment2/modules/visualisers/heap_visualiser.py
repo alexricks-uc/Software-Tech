@@ -2,6 +2,10 @@ import pygame
 import sys
 from assignment2.part3 import task_3_2
 
+"""
+Menu screen for heap visualiser
+"""
+
 WIDTH, HEIGHT = 800, 700
 clock = pygame.time.Clock()
 
@@ -11,10 +15,17 @@ BASE_Y = HEIGHT - BLOCK_HEIGHT - 20
 
 
 def heap_visualisation():
+    """
+    Calls main of task_3_2
+    """
     task_3_2.main()
 
 
 def run(screen):
+    """
+    Runs heap menu
+    :param screen: pygame window
+    """
     font = pygame.font.SysFont(None, 28)
 
     menu_items = [

@@ -4,6 +4,11 @@ import unittest
 
 from assignment2.modules.classes.bst import *
 
+"""
+Please note that testing and benchmarking of any non-class-based programs was 
+neglected, as discussed with tutor
+"""
+
 
 class TestBST(unittest.TestCase):
 

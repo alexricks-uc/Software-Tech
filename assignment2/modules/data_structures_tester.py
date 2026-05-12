@@ -4,6 +4,10 @@ from assignment2.modules.visualisers import puzzles_visualiser, \
     data_structures_visualiser, heap_visualiser, graph_visualiser, \
     sorting_visualiser
 
+"""
+Main menu which runs all programs
+"""
+
 pygame.init()
 
 WIDTH, HEIGHT = 800, 700
@@ -15,11 +19,20 @@ clock = pygame.time.Clock()
 
 
 def draw_text(text, pos):
+    """
+    Draws text on screen
+    :param text: text to be drawn
+    :param pos: position of text
+    """
     txt_surface = FONT.render(text, True, (0, 0, 0))
     screen.blit(txt_surface, pos)
 
 
 def main_menu():
+    """
+    Displays menu for program selection
+    :return: buttons for selection
+    """
     screen.fill((200, 200, 250))
     draw_text("Algorithm Explorer", (WIDTH // 3, 50))
 
@@ -41,6 +54,9 @@ def main_menu():
 
 
 def main():
+    """
+    Runs menu for program selection
+    """
     running = True
     current_module = None
 

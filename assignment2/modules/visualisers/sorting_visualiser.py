@@ -2,6 +2,10 @@ import pygame
 import sys
 from assignment2.part2 import task_2_3
 
+"""
+Menu screen for sorting visualiser
+"""
+
 WIDTH, HEIGHT = 800, 700
 clock = pygame.time.Clock()
 
@@ -11,10 +15,17 @@ BASE_Y = HEIGHT - BLOCK_HEIGHT - 20
 
 
 def sorting_visualisation():
+    """
+    Calls main of task_2_3
+    """
     task_2_3.main()
 
 
 def run(screen):
+    """
+    Calls main of task_2
+    :param screen: pygame window
+    """
     font = pygame.font.SysFont(None, 28)
 
     menu_items = [

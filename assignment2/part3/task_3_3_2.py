@@ -1,5 +1,10 @@
 import pygame
 
+"""
+Visualises a table showing the number of different ways a money value can be 
+reached with the given coins
+"""
+
 pygame.init()
 WIDTH, HEIGHT = 600, 750
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -11,6 +16,14 @@ desc = "esc: quit, return: find new combos. Type below"
 
 
 def draw_table(n, combos, entered="", invalid=False):
+    """
+    Draws the table alongside a description, an input box and some warning text
+    :param n: value which can be found by a certain number of combinations
+    :param combos: number of ways any value can be reached
+    :param entered: text entered by user
+    :param invalid: whether the value is too large to display the full table
+    :return: input box
+    """
     screen.fill((255, 255, 255))
 
     desc_rect = pygame.Rect(0, 0, WIDTH, 50)
@@ -88,6 +101,13 @@ def draw_table(n, combos, entered="", invalid=False):
 
 
 def get_number_of_ways(n, tender):
+    """
+    Find number of ways values can be reached
+    :param n: maximum value for combinations to be found
+    :param tender: different coins that are being used
+    :return: maximum value and the combinations that values equal or less than
+    the maximum value can be found
+    """
     combinations = [0] * ((n + 5) // 5)
     combinations[0] = 1
 
@@ -98,12 +118,10 @@ def get_number_of_ways(n, tender):
     return n, combinations
 
 
-def print_array(tender):
-    for i in tender:
-        print(i)
-
-
 def main():
+    """
+    Runs visualiser until the user quits
+    """
     tender = [5, 10, 20, 50, 100, 200]  # coins only, given in cents
     n, combos = -1, []
     input_rect = draw_table(n, combos)

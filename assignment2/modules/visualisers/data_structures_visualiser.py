@@ -5,6 +5,10 @@ from assignment2.part1 import task_1_3
 from assignment2.part2 import task_2_1
 from assignment2.part2 import task_2_2
 
+"""
+Menu screen for data structure visualisers
+"""
+
 WIDTH, HEIGHT = 800, 700
 clock = pygame.time.Clock()
 
@@ -14,6 +18,11 @@ BASE_Y = HEIGHT - BLOCK_HEIGHT - 20
 
 
 def stack_visualization(screen, font):
+    """
+    Visualises a stack
+    :param screen: pygame window
+    :param font: font of text on screen
+    """
     stack = Stack()
     counter = 1
     running = True
@@ -62,18 +71,31 @@ def stack_visualization(screen, font):
 
 
 def queue_visualization(font):
+    """
+    Calls main of task_1_3
+    """
     task_1_3.main(font)
 
 
 def linked_list_visualisation():
+    """
+    Calls main of task_2_1
+    """
     task_2_1.main()
 
 
 def bst_visualisation():
+    """
+    Calls main of task_2_2
+    """
     task_2_2.main()
 
 
 def run(screen):
+    """
+    Runs the data structures menu
+    :param screen: pygame window
+    """
     font = pygame.font.SysFont(None, 28)
 
     menu_items = [

@@ -2,6 +2,10 @@ import pygame
 
 from assignment2.modules.classes.my_queue import Queue
 
+"""
+Queue visualiser opened in main testing program
+"""
+
 pygame.init()
 
 WIDTH, HEIGHT = 800, 600
@@ -17,6 +21,12 @@ BASE_Y = HEIGHT - BLOCK_HEIGHT - 20
 
 
 def draw_queue(font, counter=0, enq_counter=0):
+    """
+    Draws the queue with animations and instruction text
+    :param font: font of text
+    :param counter: value of next queue item
+    :param enq_counter: animation translation
+    """
     screen.fill((50, 50, 50))
     j = 0
 
@@ -53,6 +63,14 @@ def draw_queue(font, counter=0, enq_counter=0):
 
 
 def keyboard_clicks(counter, anim, font):
+    """
+    Handles keyboard clicks
+    :param counter: value of next item in queue
+    :param anim: value for translation of rects
+    :param font: font of text
+    :return: whether the program should continue running, the value of a new
+    queue item, and the animation displacement
+    """
     up = False
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -87,6 +105,10 @@ def keyboard_clicks(counter, anim, font):
 
 
 def main(font):
+    """
+    Runs visualiser until user quits
+    :param font: font of instruction text
+    """
     counter = 1
     anim = 40
     running = True

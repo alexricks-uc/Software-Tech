@@ -2,6 +2,10 @@ import pygame
 import sys
 import time
 
+"""
+Program that visualises a linear search of a list
+"""
+
 pygame.init()
 WIDTH, HEIGHT = 600, 290
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
@@ -13,6 +17,15 @@ cell_width = WIDTH // len(numbers)
 
 def draw_grid(comparisons, found, highlight_index=None, selected=False,
               entered_text=''):
+    """
+    Displays the linear search visualiser
+    :param comparisons: number of comparisons completed
+    :param found: whether the item searched has been found
+    :param highlight_index: list items to be highlighted
+    :param selected: whether an item(s) has been given to search for
+    :param entered_text: text inputted in search box
+    :return: the selection made for the search
+    """
     screen.fill((30, 30, 30))
 
     for i, num in enumerate(numbers):
@@ -91,6 +104,13 @@ def draw_grid(comparisons, found, highlight_index=None, selected=False,
 
 
 def linear_search(target, entry=''):
+    """
+    Searches for a given item in a list from the first to last index
+    :param target: item being searched for
+    :param entry: entry in textbox
+    :return: number of comparisons, whether the item was found, and the index
+    it was found at
+    """
     comparisons = 0
     found = False
     for i, num in enumerate(numbers):
@@ -109,6 +129,9 @@ def linear_search(target, entry=''):
 
 
 def main():
+    """
+    Draws the initial grid, then begins the visualisation after a selection is made
+    """
     targets = [10, 3, 4]
     selected, number = draw_grid(0, False)
     if number == 'A':
