@@ -1,7 +1,6 @@
-import pygame
-import sys
-import random
 import math
+import random
+import pygame
 
 pygame.init()
 WIDTH, HEIGHT = 600, 450
@@ -189,8 +188,6 @@ def main():
             else:
                 running = False
         clock.tick(30)
-    # pygame.time.wait(2000)
-    # pygame.quit()
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
-import pygame
 import sys
+import pygame
 from assignment2.part3 import task_3_3_1
 from assignment2.part3 import task_3_3_2
 

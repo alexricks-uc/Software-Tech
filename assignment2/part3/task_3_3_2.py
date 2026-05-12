@@ -101,10 +101,6 @@ def print_array(tender):
 
 def main():
     tender = [5, 10, 20, 50, 100, 200]
-    # print("The Coins Array:")
-    # print_array(tender)
-    # print("Solution: ", end="")
-    # print(get_number_of_ways(200, tender))
     n, combos = -1, []
     input_rect = draw_table(n, combos)
     running = True

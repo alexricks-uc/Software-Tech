@@ -72,7 +72,6 @@ def count_paths(obstacles=[]):
 
 
 def find_path(dp, obstacles):
-    # No path exists
     if dp[ROWS - 1][COLS - 1] == 0:
         return []
     r = ROWS - 1
@@ -80,46 +79,13 @@ def find_path(dp, obstacles):
     p = []
     while (r, c) != (0, 0):
         p.append((r, c))
-        # Prefer moving up if possible
         if r > 0 and dp[r - 1][c] > 0:
             r -= 1
-        # Otherwise move left
         elif c > 0 and dp[r][c - 1] > 0:
             c -= 1
     p.append((0, 0))
     p.reverse()
     return p
-    # if dp[ROWS - 1][COLS - 1] == 0:
-    #     return "Path is not possible"
-    # path = [[None] * COLS for _ in range(ROWS)]
-    # for r in range(ROWS):
-    #     for c in range(COLS):
-    #         if dp[r][c] != 0
-    #             path[r][c] = 1
-    # for c in range(COLS - 1, -1, -1):
-    #     if dp[ROWS - 1][c] == 0:
-    #         break
-    #     else:
-    #         path[ROWS - 1][c] = 1
-    # for r in range(ROWS - 1, -1, -1):
-    #     if dp[r][COLS - 1] == 0:
-    #         break
-    #     else:
-    #         path[r][COLS - 1] = 1
-    # for r in range(ROWS - 2, -1, -1):
-    #     for c in range(COLS - 2, -1, -1):
-    #         if dp[r][c] == 0 or (path[r+1][c] == 0 and path[r][c+1] == 0):
-    #             break
-    #         elif path[r+1][c] == 0:
-    #
-    #         else:
-    #             path[r][c] = 1
-    # found = False
-    # r, c = 0, 0
-    # while not found:
-    #     if dp[r+1][c] == 1:
-    #         r += 1
-    #     elif dp[r][c+1] == 1:
 
 
 def main():
@@ -144,11 +110,7 @@ def main():
                         else:
                             obstacles.append(coord)
                         dp = count_paths(obstacles)
-                # if path_rect.collidepoint(event.pos):
-                #     path = find_path(dp, obstacles)
-                #     dp = draw_grid(dp, obstacles, path)
         clock.tick(30)
-    # print(f"Total unique paths: {total_paths}")
 
 
 if __name__ == "__main__":

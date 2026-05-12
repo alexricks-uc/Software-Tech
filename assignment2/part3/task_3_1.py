@@ -1,6 +1,5 @@
-import pygame
-import sys
 import collections
+import pygame
 
 pygame.init()
 WIDTH, HEIGHT = 600, 550
@@ -89,30 +88,10 @@ def bfs(start):
         visited.append(current)
         draw_graph(visited=visited, frontier=set(queue), current=current)
         pygame.time.wait(700)
-        # for event in pygame.event.get():
-        #     if event.type == pygame.QUIT:
-        #         pygame.quit()
-        #         sys.exit()
         for neighbor in graph[current]:
             if neighbor not in visited and neighbor not in queue:
                 queue.append(neighbor)
 
-
-# def dfs(start, visited=None, stack=None):
-#     if visited is None:
-#         visited = set()
-#     if stack is None:
-#         stack = []
-#     visited.add(start)
-#     stack.append(start)
-#     frontier = set(graph[start]) - visited
-#     draw_graph(visited=visited, frontier=frontier.union(set(stack)),
-#                current=start)
-#     pygame.time.wait(700)
-#     for neighbor in graph[start]:
-#         if neighbor not in visited:
-#             dfs(neighbor, visited, stack)
-#     stack.pop()
 
 def dfs(start):
     visited = []
@@ -126,43 +105,6 @@ def dfs(start):
                     stack.append(neighbor)
             draw_graph(visited=visited, frontier=set(stack), current=current)
             pygame.time.wait(700)
-
-
-# def dfsRec(adj, visited, s, res):
-#     visited[s] = True
-#     res.append(s)
-#
-#     # Recursively visit all adjacent vertices
-#     # that are not visited yet
-#     for i in adj[s]:
-#         if not visited[i]:
-#             dfsRec(adj, visited, i, res)
-
-# def dfs_1(start):
-#     visited = set()
-#     dfs(start, visited)
-#     # queue = collections.deque([start])
-#     # while queue:
-#     #     current = queue.popleft()
-#     #     visited.add(current)
-#     #     draw_graph(visited=visited, frontier=set(queue), current=current)
-#     #     pygame.time.wait(700)
-#     #     for event in pygame.event.get():
-#     #         if event.type == pygame.QUIT:
-#     #             pygame.quit()
-#     #             sys.exit()
-#     #     for neighbor in graph[current]:
-#     #         if neighbor not in visited and neighbor not in queue:
-#     #             queue.append(neighbor)
-#     #             dfs(neighbor)
-#     print(visited)
-
-
-# def dfs(adj):
-#     visited = [False] * len(adj)
-#     res = []
-#     dfsRec(adj, visited, 0, res)
-#     return res
 
 
 def main():
@@ -190,11 +132,6 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     running = False
-    # bfs('A')
-    # pygame.time.wait(1000)
-    # dfs('A', set())
-    # pygame.time.wait(2000)
-    # pygame.quit()
 
 
 if __name__ == "__main__":

@@ -103,7 +103,6 @@ class BST:
                         successor_parent.right = successor.right
 
     def highlight_current(self, highlight_idx, inorder_nodes):
-        # while highlight_idx < len(inorder_nodes):
         node = inorder_nodes[highlight_idx]
         x, y = WIDTH // 2, 50
         # We need to find node position (roughly)
