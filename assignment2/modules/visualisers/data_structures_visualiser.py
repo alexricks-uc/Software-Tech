@@ -113,9 +113,7 @@ def run(screen):
                     choice = menu_items[selected]
 
                     if choice == "Stack Visualization (press enter)":
-                        pygame.display.set_mode((600, 500))
                         stack_visualization(screen, font)
-                        pygame.display.set_mode((WIDTH, HEIGHT))
 
                     if choice == "Queue Visualization (press enter)":
                         pygame.display.set_mode((800, 600))

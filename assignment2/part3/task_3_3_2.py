@@ -26,11 +26,11 @@ def draw_table(n, combos, entered="", invalid=False):
     input_text_rect = input_text.get_rect(center=input_rect.center)
     screen.blit(input_text, input_text_rect)
 
-    warning_rect1 = pygame.Rect(0, 100, WIDTH, 50)
-    pygame.draw.rect(screen, (200, 200, 200), warning_rect1)
-    warning_rect2 = pygame.Rect(0, 150, WIDTH, 50)
-    pygame.draw.rect(screen, (200, 200, 200), warning_rect2)
     if invalid:
+        warning_rect1 = pygame.Rect(0, 100, WIDTH, 50)
+        pygame.draw.rect(screen, (200, 200, 200), warning_rect1)
+        warning_rect2 = pygame.Rect(0, 150, WIDTH, 50)
+        pygame.draw.rect(screen, (200, 200, 200), warning_rect2)
         invalid_text = FONT.render("Please enter a valid integer", True,
                                    (0, 0, 0))
         invalid_text_rect = invalid_text.get_rect(center=warning_rect1.center)
@@ -52,15 +52,22 @@ def draw_table(n, combos, entered="", invalid=False):
         col = 8
     else:
         col = 8
-        large = copy.copy(n)
-        n = 200
-        warning = f"This number is too big for this visualiser. You can reach this amount with {combos[-1]} combinations."
-        warning_text1 = FONT.render(warning[:43], True, (0, 0, 0))
-        warning_text_rect1 = warning_text1.get_rect(center=warning_rect1.center)
-        screen.blit(warning_text1, warning_text_rect1)
-        warning_text2 = FONT.render(warning[43:], True, (0, 0, 0))
-        warning_text_rect2 = warning_text2.get_rect(center=warning_rect2.center)
-        screen.blit(warning_text2, warning_text_rect2)
+        # large = copy.copy(n)
+        # n = 200
+        if not invalid:
+            warning_rect1 = pygame.Rect(0, 100, WIDTH, 50)
+            pygame.draw.rect(screen, (200, 200, 200), warning_rect1)
+            warning_rect2 = pygame.Rect(0, 150, WIDTH, 50)
+            pygame.draw.rect(screen, (200, 200, 200), warning_rect2)
+            warning = f"This number is too big for this visualiser. You can reach this amount with {combos[-1]} combinations."
+            warning_text1 = FONT.render(warning[:43], True, (0, 0, 0))
+            warning_text_rect1 = warning_text1.get_rect(
+                center=warning_rect1.center)
+            screen.blit(warning_text1, warning_text_rect1)
+            warning_text2 = FONT.render(warning[43:], True, (0, 0, 0))
+            warning_text_rect2 = warning_text2.get_rect(
+                center=warning_rect2.center)
+            screen.blit(warning_text2, warning_text_rect2)
     for i in range(col):
         for j in range(row):
             rect = pygame.Rect(i * WIDTH // col,
@@ -100,7 +107,7 @@ def print_array(tender):
 
 
 def main():
-    tender = [5, 10, 20, 50, 100, 200]
+    tender = [5, 10, 20, 50, 100, 200]  # coins only, given in cents
     n, combos = -1, []
     input_rect = draw_table(n, combos)
     running = True
