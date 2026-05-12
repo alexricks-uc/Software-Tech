@@ -1,4 +1,3 @@
-import copy
 import pygame
 
 pygame.init()
@@ -52,8 +51,6 @@ def draw_table(n, combos, entered="", invalid=False):
         col = 8
     else:
         col = 8
-        # large = copy.copy(n)
-        # n = 200
         if not invalid:
             warning_rect1 = pygame.Rect(0, 100, WIDTH, 50)
             pygame.draw.rect(screen, (200, 200, 200), warning_rect1)
